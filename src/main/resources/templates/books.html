@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Books list</title>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th> Title </th>
+    <th> Author </th>
+    <th> ISBN </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:if="${booksList.isEmpty()}">
+    <td colspan="2"> No Books Available </td>
+  </tr>
+  <tr th:each="book : ${booksList}">
+    <td><span th:text="${book.name}"> Title </span></td>
+    <td><span th:text="${book.getAuthor()}"> Author </span></td>
+    <td><span th:text="${book.getIsbn()}"> ISBN </span></td>
+    <td><a th:href="@{/book(id=${booksList.indexOf(book) + 1})}">Details</a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
